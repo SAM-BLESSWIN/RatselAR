@@ -6,22 +6,46 @@ using UnityEngine.XR.ARSubsystems;
 
 public class ShapeSelection : MonoBehaviour
 {
+    public GameObject cube;
+    public GameObject cuboid;
+    public GameObject cone;
+    public GameObject sphere;
     public GameObject square;
+    public GameObject rectangle;
+    public GameObject triangle;
+    public GameObject circle;
 
+
+    public void cub()
+    {
+        Instantiate(cube,transform.position, Quaternion.identity);
+    }
+    public void coid()
+    {
+        Instantiate(cuboid, transform.position, Quaternion.identity);
+    }
+    public void con()
+    {
+        Instantiate(cone, transform.position, Quaternion.identity);
+    }
+    public void sp()
+    {
+        Instantiate(sphere, transform.position, Quaternion.identity);
+    }
     public void sq()
     {
         Instantiate(square,transform.position,Quaternion.identity);
     }
     public void rect()
     {
-        Toast.Instance.Show("rectangle");
+        Instantiate(rectangle, transform.position, Quaternion.identity);
     }
     public void tri()
     {
-        Toast.Instance.Show("triangle");
+        Instantiate(triangle, transform.position, Quaternion.identity);
     }
-    public void circle()
+    public void cir()
     {
-        Toast.Instance.Show("circle");
+        Instantiate(circle, transform.position, Quaternion.identity);
     }
 }
