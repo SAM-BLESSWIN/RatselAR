@@ -6,11 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Menu.unity
-    guid: c340ef053b825824aa0016f1e1db4798
-  - enabled: 1
-    path: Assets/Scenes/Shapes.unity
-    guid: f808f3baeb5b6094893a990a4fd946b2
+    path: Assets/Scenes/Color.unity
+    guid: 3b4ed0f67741f8e4b8bff0620aa458e3
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 26848eae126ad4e4bb227053510414ed,
       type: 2}
