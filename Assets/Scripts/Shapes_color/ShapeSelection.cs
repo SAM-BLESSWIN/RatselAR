@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
@@ -15,37 +16,82 @@ public class ShapeSelection : MonoBehaviour
     public GameObject triangle;
     public GameObject circle;
 
+    [SerializeField]
+    private GameObject placementindicator;
+    [SerializeField]
+    private GameObject arcamera;
+    private Pose hitpose;
+    private ARRaycastManager arRaycastManager;
+    private bool placementposeisvalid;
+
+    private void Awake()
+    {
+        arRaycastManager = GetComponent<ARRaycastManager>();
+    }
+
+    private void Update()
+    {
+        Updateplacementpose();
+        Updateplacementindicator();
+    }
+
+    private void Updateplacementpose()
+    {
+        var screenCenter = Camera.current.ViewportToScreenPoint(new Vector3(0.5f, 0.5f));
+        var hits = new List<ARRaycastHit>();
+        arRaycastManager.Raycast(screenCenter, hits, TrackableType.Planes);
+
+        placementposeisvalid = hits.Count > 0;
+        if (placementposeisvalid)
+        {
+            hitpose = hits[0].pose;
+        }
+    }
+
+    private void Updateplacementindicator()
+    {
+        if(placementposeisvalid)
+        {
+            placementindicator.SetActive(true);
+            placementindicator.transform.SetPositionAndRotation(hitpose.position, hitpose.rotation);
+        }
+        else
+        {
+            placementindicator.SetActive(false);
+        }
+    }
+
 
     public void cub()
     {
-        Instantiate(cube,transform.position, Quaternion.identity);
+        Instantiate(cube,hitpose.position,cube.transform.rotation);
     }
     public void coid()
     {
-        Instantiate(cuboid, transform.position, Quaternion.identity);
+        Instantiate(cuboid, hitpose.position, cuboid.transform.rotation);
     }
     public void con()
     {
-        Instantiate(cone, transform.position, Quaternion.identity);
+        Instantiate(cone, hitpose.position, cone.transform.rotation);
     }
     public void sp()
     {
-        Instantiate(sphere, transform.position, Quaternion.identity);
+        Instantiate(sphere, hitpose.position, sphere.transform.rotation);
     }
     public void sq()
     {
-        Instantiate(square,transform.position,Quaternion.identity);
+        Instantiate(square,hitpose.position,square.transform.rotation);
     }
     public void rect()
     {
-        Instantiate(rectangle, transform.position, Quaternion.identity);
+        Instantiate(rectangle, hitpose.position, rectangle.transform.rotation);
     }
     public void tri()
     {
-        Instantiate(triangle, transform.position, Quaternion.identity);
+        Instantiate(triangle,hitpose.position, triangle.transform.rotation);
     }
     public void cir()
     {
-        Instantiate(circle, transform.position, Quaternion.identity);
+        Instantiate(circle,hitpose.position, circle.transform.rotation);
     }
 }
