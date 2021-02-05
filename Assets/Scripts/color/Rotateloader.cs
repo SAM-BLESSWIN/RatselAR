@@ -9,6 +9,8 @@ public class Rotateloader : MonoBehaviour
     public float rotMinValue;
     public float rotMaxValue;
 
+    public Transform child;
+
     void Start()
     {
         rotateSlider = GameObject.Find("RotateSlider").GetComponent<Slider>();
@@ -16,6 +18,11 @@ public class Rotateloader : MonoBehaviour
         rotateSlider.maxValue = rotMaxValue;
 
         rotateSlider.onValueChanged.AddListener(RotateSliderUpdate);
+    }
+
+    void Update()
+    {
+        child.transform.rotation = Quaternion.Euler(0.0f, 0.0f, gameObject.transform.rotation.z * -1.0f);
     }
 
     void RotateSliderUpdate(float value)

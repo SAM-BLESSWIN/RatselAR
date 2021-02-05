@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
+using TMPro;
 
 
 public class OrginPlacement : MonoBehaviour
@@ -15,6 +16,12 @@ public class OrginPlacement : MonoBehaviour
     private Pose PlacementPose;
     private ARRaycastManager aRRaycastManager;
     private bool placementPoseIsValid = false;
+    private TMP_Text colorname;
+
+    List<string> colorlist = new List<string>
+    {
+    "red","green","blue","yellow","orange","violet"
+    };
 
     private void Awake()
     {
@@ -68,4 +75,9 @@ public class OrginPlacement : MonoBehaviour
         rotatecanvas.SetActive(true);
     }
 
+    public void namechange()
+    {
+        colorname = spawnedObject.GetComponentInChildren<TMP_Text>();
+        colorname.text = colorlist[Random.Range(0, 6)].ToString();
+    }
 }

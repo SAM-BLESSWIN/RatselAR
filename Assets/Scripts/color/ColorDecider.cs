@@ -5,7 +5,7 @@ using TMPro;
 
 public class ColorDecider : MonoBehaviour
 {
-    private TMP_Text colorname;
+    public TMP_Text color;
 
     List<string> colorlist = new List<string>
     {
@@ -14,11 +14,17 @@ public class ColorDecider : MonoBehaviour
 
     private void Awake()
     {
-        colorname = GameObject.Find("Colorname").GetComponentInChildren<TMP_Text>();
+       // color = gameObject.GetComponentInChildren<Canvas>();
+    }
+
+    private void Start()
+    {
+        color.text = "white";
     }
 
     public void namechange()
     {
-        colorname.text = colorlist[Random.Range(0, 6)].ToString();
+       color.text = colorlist[Random.Range(0, 6)].ToString();
+        Debug.Log(color.text);
     }
 }
