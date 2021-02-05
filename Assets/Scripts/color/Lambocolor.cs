@@ -1,43 +1,43 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Lambocolor : MonoBehaviour
 {
-
-    public Material mymaterial;
-
+    [SerializeField]
+    private Material mymaterial;
+    
 
     private void Awake()
     {
         mymaterial.color = Color.white;
     }
 
-    public void red()
+    public void setred()
     {
         mymaterial.color = Color.red;
     }
-
-    public void green()
+    public void setgreen()
     {
         mymaterial.color = Color.green;
     }
-    public void blue()
+    public void setblue()
     {
         mymaterial.color = Color.blue;
     }
-    public void yellow()
+    public void setyellow()
     {
         mymaterial.color = Color.yellow;
     }
-    public void orange()
+    public void setorange()
     {
         Color orange = new Color(1, 0.55f, 0, 1);
         mymaterial.color = orange;
     }
-    public void violet()
+    public void setviolet()
     {
-        Color violet = new Color(0.65f, 0, 1,1);
+        Color violet = new Color(0.65f, 0, 1, 1);
         mymaterial.color = violet;
     }
 }

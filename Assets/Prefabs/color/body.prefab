@@ -26,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4394098795248579221}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -93,3 +93,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mymaterial: {fileID: 2100000, guid: f0d4b7e72155b1449937f20a517980c0, type: 2}
+  crct: {fileID: 7876974696388057379, guid: 31889d93bd54384459d2bed256022e5d, type: 3}
+  wrng: {fileID: 7496123713603892576, guid: 222c6fbf7cfb34045b9e905b9d38c66d, type: 3}
+  colorindicator: {fileID: 1914797121115778511, guid: 1c907f87366e53a4382ab786e46c10e8,
+    type: 3}

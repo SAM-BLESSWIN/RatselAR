@@ -5,26 +5,116 @@ using TMPro;
 
 public class ColorDecider : MonoBehaviour
 {
-    public TMP_Text color;
+    [SerializeField]
+    private GameObject crct;
+    [SerializeField]
+    private GameObject wrng;
+    [SerializeField]
+    private OrginPlacement colorindicator;
+    [SerializeField]
+    private Lambocolor lambocolor;
 
-    List<string> colorlist = new List<string>
+    public void red()
     {
-    "red","green","blue","yellow","orange","violet"
-    };
-
-    private void Awake()
-    {
-       // color = gameObject.GetComponentInChildren<Canvas>();
+        if (colorindicator.textcolor() == "red")
+        {
+            crct.SetActive(true);
+            lambocolor.setred();
+            StartCoroutine(correct());
+        }
+        else
+        {
+            wrng.SetActive(true);
+            StartCoroutine(wrong());
+        }
     }
 
-    private void Start()
+    public void green()
     {
-        color.text = "white";
+        if (colorindicator.textcolor() == "green")
+        {
+            crct.SetActive(true);
+            lambocolor.setgreen();
+            StartCoroutine(correct());
+        }
+        else
+        {
+            wrng.SetActive(true);
+            StartCoroutine(wrong());
+        }
     }
 
-    public void namechange()
+    public void blue()
     {
-       color.text = colorlist[Random.Range(0, 6)].ToString();
-        Debug.Log(color.text);
+        if (colorindicator.textcolor() == "blue")
+        {
+            crct.SetActive(true);
+            lambocolor.setblue();
+            StartCoroutine(correct());
+        }
+        else
+        {
+            wrng.SetActive(true);
+            StartCoroutine(wrong());
+        }
+    }
+
+    public void yellow()
+    {
+        if (colorindicator.textcolor() == "yellow")
+        {
+            crct.SetActive(true);
+            lambocolor.setyellow();
+            StartCoroutine(correct());
+        }
+        else
+        {
+            wrng.SetActive(true);
+            StartCoroutine(wrong());
+        }
+    }
+
+    public void orange()
+    {
+        if (colorindicator.textcolor() == "orange")
+        {
+            crct.SetActive(true);
+            lambocolor.setorange();
+            StartCoroutine(correct());
+        }
+        else
+        {
+            wrng.SetActive(true);
+            StartCoroutine(wrong());
+        }
+    }
+
+    public void violet()
+    {
+        if (colorindicator.textcolor() == "violet")
+        {
+            crct.SetActive(true);
+            lambocolor.setviolet();
+            StartCoroutine(correct());
+        }
+        else
+        {
+            wrng.SetActive(true);
+            StartCoroutine(wrong());
+        }
+
+    }
+
+    IEnumerator correct()
+    {
+        yield return new WaitForSeconds(0.5f);
+        crct.SetActive(false);
+        colorindicator.namechange();
+    }
+
+    IEnumerator wrong()
+    {
+        yield return new WaitForSeconds(0.5f);
+        wrng.SetActive(false);
     }
 }

@@ -17,6 +17,7 @@ public class OrginPlacement : MonoBehaviour
     private ARRaycastManager aRRaycastManager;
     private bool placementPoseIsValid = false;
     private TMP_Text colorname;
+    private Material carcolor;
 
     List<string> colorlist = new List<string>
     {
@@ -79,5 +80,10 @@ public class OrginPlacement : MonoBehaviour
     {
         colorname = spawnedObject.GetComponentInChildren<TMP_Text>();
         colorname.text = colorlist[Random.Range(0, 6)].ToString();
+    }
+
+    public string textcolor()
+    {
+        return colorname.text;
     }
 }

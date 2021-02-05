@@ -9,4 +9,9 @@ public class MenuLoader : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
+    public void colorsload()
+    {
+        SceneManager.LoadScene(2);
+    }
+
 }
