@@ -2,12 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class Touchb : MonoBehaviour
 {
     [SerializeField]
     private TMP_Text scoretext;
     private int score=0;
+
+    public int health = 3;
+    public int numofhearts = 3;
+    public Image[] hearts;
+    private bool isdead;
+
     private void Update()
     {
         if(Input.touchCount > 0 && Input.touches[0].phase==TouchPhase.Began)
@@ -25,13 +32,18 @@ public class Touchb : MonoBehaviour
                 }
                 else if(hit.collider.tag=="d" || hit.collider.tag == "p" || hit.collider.tag == "q")
                 {
-                    if(score>0)
-                    {
-                        score -= 10;
-                    }
-                    scoretext.text = score.ToString();
+                    /* if(score>0)
+                     {
+                         score -= 10;
+                     }
+                     scoretext.text = score.ToString();*/
                 }
             }
+        }
+
+        if(score >=100)
+        {
+
         }
     }
 }
