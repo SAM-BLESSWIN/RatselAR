@@ -7,11 +7,11 @@ public class Mainmenu : MonoBehaviour
 {
     public void learn()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 
     public void game()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(1);
     }
 }

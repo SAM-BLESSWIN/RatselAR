@@ -6,8 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Menu/Mainmenu.unity
+    guid: 9ff991efc29c8864bba64df549c5865e
+  - enabled: 1
     path: Assets/Scenes/Menu/Gamemenu.unity
     guid: c15c3d00b595bac4d909d78a85e6e5b2
+  - enabled: 1
+    path: Assets/Scenes/Menu/LearnMenu.unity
+    guid: c340ef053b825824aa0016f1e1db4798
   - enabled: 1
     path: Assets/Scenes/Game/G_b.unity
     guid: 4d944f4d6e74e474aaf6a97e4009ad2d
@@ -17,9 +23,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Game/G_Count.unity
     guid: 73e07322bd27a98449f6df2854822276
-  - enabled: 1
-    path: Assets/Scenes/Game/G_Shapes.unity
-    guid: 046c0a67b6fd68b4e93780ea37eb80d4
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 26848eae126ad4e4bb227053510414ed,
       type: 2}
