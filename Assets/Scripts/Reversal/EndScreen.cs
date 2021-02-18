@@ -23,10 +23,6 @@ public class EndScreen : MonoBehaviour
     public void next()
     {
         int currentlevel = SceneManager.GetActiveScene().buildIndex;
-        if (currentlevel >= PlayerPrefs.GetInt("levelsunlocked"))
-        {
-            PlayerPrefs.SetInt("levelsunlocked", currentlevel + 1);
-        }
         SceneManager.LoadScene(currentlevel + 1);
     }
 

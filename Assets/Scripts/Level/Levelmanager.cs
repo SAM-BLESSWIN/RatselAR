@@ -10,7 +10,7 @@ public class Levelmanager : MonoBehaviour
     private int levelsunlocked;
     [SerializeField]
     private Button[] button;
-    private TMP_Text[] leveltext=new TMP_Text[3];
+    private TMP_Text[] leveltext=new TMP_Text[5];
     [SerializeField]
     private Sprite locked;
 
@@ -39,6 +39,8 @@ public class Levelmanager : MonoBehaviour
             button[i].image.sprite = null;
             leveltext[i].gameObject.SetActive(true);
         }
+
+        Debug.Log(PlayerPrefs.GetInt("levelsunlocked"));
     }
 
     public void Loadscene(int levelindex)

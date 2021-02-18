@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Touchb : MonoBehaviour
 {
@@ -63,8 +64,8 @@ public class Touchb : MonoBehaviour
                 else if(hit.collider.tag=="d" || hit.collider.tag == "p" || hit.collider.tag == "q")
                 {
                     wrng=Instantiate(wrong, hit.point, Quaternion.identity);
-                    Destroy(wrng,0.2f);
                     Handheld.Vibrate();
+                    Destroy(wrng,0.2f);
                     numofhearts -= 1;
                 }
             }
@@ -72,9 +73,21 @@ public class Touchb : MonoBehaviour
 
         if(score >=100)
         {
-            ongame.SetActive(false); 
-            winscreen.SetActive(true);
+            StartCoroutine(loadwin());
+        }
+
+        IEnumerator loadwin()
+        {
+            yield return new WaitForSeconds(1f);
             Time.timeScale = 0f;
+            ongame.SetActive(false);
+            winscreen.SetActive(true);
+
+            int currentlevel = SceneManager.GetActiveScene().buildIndex;
+            if (currentlevel - 2 >= PlayerPrefs.GetInt("levelsunlocked"))
+            {
+                PlayerPrefs.SetInt("levelsunlocked", (currentlevel - 2) + 1);
+            }
         }
 
         if(numofhearts<=0)

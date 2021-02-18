@@ -13,5 +13,7 @@ public class PassLevel : MonoBehaviour
         {
             PlayerPrefs.SetInt("levelsunlocked", currentlevel + 1);
         }
+
+        Debug.Log(PlayerPrefs.GetInt("levelsunlocked"));
     }
 }
