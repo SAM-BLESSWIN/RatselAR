@@ -48,4 +48,8 @@ public class Levelmanager : MonoBehaviour
         SceneManager.LoadScene(levelindex);
     }
     
+    public void loadback()
+    {
+        SceneManager.LoadScene(0);
+    }
 }

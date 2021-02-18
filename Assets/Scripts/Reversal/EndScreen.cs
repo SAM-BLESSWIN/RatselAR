@@ -7,7 +7,7 @@ public class EndScreen : MonoBehaviour
 { 
     public void menu()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     public void tryagain()
@@ -17,7 +17,7 @@ public class EndScreen : MonoBehaviour
 
     public void exit()
     {
-        Application.Quit();
+        SceneManager.LoadScene(0);
     }
 
     public void next()
