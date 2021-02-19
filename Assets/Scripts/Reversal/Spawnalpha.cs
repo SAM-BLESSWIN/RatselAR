@@ -15,10 +15,9 @@ public class Spawnalpha : MonoBehaviour
     {
         
     }
-
     IEnumerator spawnletters()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
         Instantiate(alpha[Random.Range(0, alpha.Length)], this.transform.position, Quaternion.identity);
         StartCoroutine(spawnletters());
     }

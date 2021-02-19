@@ -1310,7 +1310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timertext: {fileID: 707869536}
-  ufo: {fileID: 4003037188668688203}
+  spawnmodel: {fileID: 4003037188668688203}
 --- !u!114 &661664794
 MonoBehaviour:
   m_ObjectHideFlags: 0

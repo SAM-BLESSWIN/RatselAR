@@ -9,7 +9,7 @@ public class StartTimer : MonoBehaviour
     [SerializeField]
     private TMP_Text timertext;
     [SerializeField]
-    private GameObject ufo;
+    private GameObject spawnmodel;
 
     void Start()
     {
@@ -28,6 +28,6 @@ public class StartTimer : MonoBehaviour
         timertext.text = "GO!";
         yield return new WaitForSeconds(2f);
         gameObject.SetActive(false);
-        ufo.SetActive(true);
+        spawnmodel.SetActive(true);
     }
 }
