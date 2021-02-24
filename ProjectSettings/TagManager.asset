@@ -9,6 +9,10 @@ TagManager:
   - d
   - p
   - q
+  - cube
+  - sphere
+  - cone
+  - cuboid
   layers:
   - Default
   - TransparentFX
