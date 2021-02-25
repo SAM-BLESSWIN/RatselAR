@@ -12,6 +12,8 @@ public class DuckPlacement : MonoBehaviour
 
     [SerializeField]
     private GameObject startbt;
+    [SerializeField]
+    private GameObject countcanvas;
 
     private GameObject spawnedObject;
     private Pose PlacementPose;
@@ -19,6 +21,12 @@ public class DuckPlacement : MonoBehaviour
     private bool placementPoseIsValid = false;
     private Animator anim;
     private Eggspawn eggspawn;
+    private int eggcount;
+
+    [SerializeField]
+    private int a;
+    [SerializeField]
+    private int b;
 
     private void Awake()
     {
@@ -36,7 +44,6 @@ public class DuckPlacement : MonoBehaviour
 
         UpdatePlacementPose();
         UpdatePlacementIndicator();
-
 
     }
     void UpdatePlacementIndicator()
@@ -76,6 +83,19 @@ public class DuckPlacement : MonoBehaviour
     public void walk()
     {
         anim.SetBool("walk", true);
-        eggspawn.createeggs();
+        eggcount= Random.Range(a,b);
+        eggspawn.createeggs(eggcount);
+        StartCoroutine(loadcountcanvas());
+    }
+
+    IEnumerator loadcountcanvas()
+    {
+        yield return new WaitForSeconds(eggcount + 3);
+        countcanvas.SetActive(true);
+    }
+
+    public int passcount()
+    {
+        return eggcount;
     }
 }

@@ -334,6 +334,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   egg: {fileID: 8767920000540132295, guid: b9b7d272487bc0b4295627e57dc89d42, type: 3}
+  countcanvas: {fileID: 0}
 --- !u!1 &3012098408733840573
 GameObject:
   m_ObjectHideFlags: 0

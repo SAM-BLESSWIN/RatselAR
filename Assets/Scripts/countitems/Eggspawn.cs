@@ -10,9 +10,9 @@ public class Eggspawn : MonoBehaviour
     private int i = 0;
     private int egglimit;
 
-    public void createeggs()
+    public void createeggs(int eggcount)
     {
-        egglimit = Random.Range(1, 11);
+        egglimit =eggcount;
         StartCoroutine(layeggs());
     }
 
@@ -25,10 +25,9 @@ public class Eggspawn : MonoBehaviour
             i++;
             StartCoroutine(layeggs());
         }
-         else
+        else
         {
-            StopCoroutine(layeggs());
+            StopCoroutine(layeggs());   
         }
     }
-   
 }
