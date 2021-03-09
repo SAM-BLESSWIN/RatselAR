@@ -90,7 +90,7 @@ public class DuckPlacement : MonoBehaviour
 
     IEnumerator loadcountcanvas()
     {
-        yield return new WaitForSeconds(eggcount + 3);
+        yield return new WaitForSeconds(eggcount + 2);
         countcanvas.SetActive(true);
     }
 
