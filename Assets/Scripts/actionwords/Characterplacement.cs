@@ -5,7 +5,7 @@ using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using TMPro;
 
-public class AnimalPlacement : MonoBehaviour
+public class Characterplacement : MonoBehaviour
 {
     public GameObject arObjectToSpawn;
     public GameObject placementIndicator;
@@ -15,10 +15,7 @@ public class AnimalPlacement : MonoBehaviour
     private ARRaycastManager aRRaycastManager;
     private bool placementPoseIsValid = false;
 
-    private MonkeyMovement monkeymove;
 
-    [SerializeField]
-    private GameObject movekey;
 
     private void Awake()
     {
@@ -69,17 +66,5 @@ public class AnimalPlacement : MonoBehaviour
     void ARPlaceObject()
     {
         spawnedObject = Instantiate(arObjectToSpawn, PlacementPose.position, arObjectToSpawn.transform.rotation);
-        monkeymove = spawnedObject.GetComponentInChildren<MonkeyMovement>();
-        movekey.SetActive(true);
-    }
-
-    public void left()
-    {
-        monkeymove.left();
-    }
-
-    public void right()
-    {
-        monkeymove.right();
     }
 }
