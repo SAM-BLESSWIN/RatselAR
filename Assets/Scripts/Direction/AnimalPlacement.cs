@@ -18,6 +18,9 @@ public class AnimalPlacement : MonoBehaviour
     private MonkeyMovement monkeymove;
 
     [SerializeField]
+    private Direct drtext;
+
+    [SerializeField]
     private GameObject movekey;
 
     private void Awake()
@@ -71,6 +74,7 @@ public class AnimalPlacement : MonoBehaviour
         spawnedObject = Instantiate(arObjectToSpawn, PlacementPose.position, arObjectToSpawn.transform.rotation);
         monkeymove = spawnedObject.GetComponentInChildren<MonkeyMovement>();
         movekey.SetActive(true);
+        drtext.enabled=true;
     }
 
     public void left()
@@ -81,5 +85,10 @@ public class AnimalPlacement : MonoBehaviour
     public void right()
     {
         monkeymove.right();
+    }
+
+    public void center()
+    {
+        monkeymove.center();
     }
 }

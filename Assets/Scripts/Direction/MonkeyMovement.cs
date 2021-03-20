@@ -8,16 +8,21 @@ public class MonkeyMovement : MonoBehaviour
     private Transform lefttarget;
     [SerializeField]
     private Transform righttarget;
+    [SerializeField]
+    private Transform centertarget;
 
     public void left()
     {
-        //  movekey.enabled = false;
         transform.position = Vector3.MoveTowards(transform.position, lefttarget.position,5f);
     }
 
     public void right()
     {
-        // movekey.enabled = false;
         transform.position = Vector3.MoveTowards(transform.position, righttarget.position, 5f);
+    }
+
+    public void center()
+    {
+        transform.position = Vector3.MoveTowards(transform.position, centertarget.position, 5f);
     }
 }

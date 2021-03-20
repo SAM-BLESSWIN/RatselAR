@@ -19,9 +19,9 @@ MonoBehaviour:
       m_GuidLow: 4623139459175897715
       m_GuidHigh: 10666307482945554561
     m_SerializedTextureGuid:
-      m_GuidLow: 4414672137063879574
-      m_GuidHigh: 3138205833395015563
-    m_Size: {x: 1, y: 1.4703125}
+      m_GuidLow: 12521146343637159748
+      m_GuidHigh: 12292636420410987080
+    m_Size: {x: 1, y: 1.4499673}
     m_SpecifySize: 1
-    m_Name: pokemon
-    m_Texture: {fileID: 2800000, guid: 3181d39610eb3d448b8f911b94258d2b, type: 3}
+    m_Name: a
+    m_Texture: {fileID: 2800000, guid: 792c8f440c42adc44852a0f7b13798aa, type: 3}
