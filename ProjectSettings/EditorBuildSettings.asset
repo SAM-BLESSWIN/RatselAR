@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Game/G_Days.unity
-    guid: f1dfb7f40175ce743bfa46c7c779fb5b
+    path: Assets/Scenes/ImageTracking.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 26848eae126ad4e4bb227053510414ed,
       type: 2}

@@ -16,8 +16,6 @@ public class PathPlacement : MonoBehaviour
     private bool placementPoseIsValid = false;
     private JumpandMove jumpandmove;
 
-    private MonkeyMovement monkeymove;
-
 
     private void Awake()
     {
