@@ -16,6 +16,10 @@ public class PlayfabManager : MonoBehaviour
     [SerializeField]
     private TMP_Text messagetext;
     [SerializeField]
+    private GameObject rowprefab;
+    [SerializeField]
+    private Transform rowparent;
+    [SerializeField]
     private GameObject login;
     [SerializeField]
     private GameObject register;
@@ -69,10 +73,6 @@ public class PlayfabManager : MonoBehaviour
 
     private void OnLoginSuccess(LoginResult result)
     {
-        messagetext.text = "Logged in";
-        Debug.Log("Congratulations, you made your first successful API call!");
-        // int l = PlayerPrefs.GetInt("levelsunlocked");
-        // Sendlevel(l + 1);
         login.SetActive(false);
         logicon.SetActive(false);
         gameicon.SetActive(true);
@@ -82,7 +82,6 @@ public class PlayfabManager : MonoBehaviour
 
     public void Register()
     {
-        messagetext.text = " ";
         if (pwdinput.Length < 6)
         {
             messagetext.text = "Password too short";
@@ -97,7 +96,7 @@ public class PlayfabManager : MonoBehaviour
                 Password = pwdinput,
                 RequireBothUsernameAndEmail = true
             };
-            PlayFabClientAPI.RegisterPlayFabUser(request, Onregistersucccess, Onerror);
+            PlayFabClientAPI.RegisterPlayFabUser(request, Onregistersucccess, Onerror); 
         }
         else
         {
@@ -108,15 +107,23 @@ public class PlayfabManager : MonoBehaviour
 
     private void Onregistersucccess(RegisterPlayFabUserResult result)
     {
-        messagetext.text = "Registered and logged in!";
         PlayerPrefs.SetString("EMAIL", emailinput);
         PlayerPrefs.SetString("PASSWORD", pwdinput);
+        PlayFabClientAPI.UpdateUserTitleDisplayName(
+            new UpdateUserTitleDisplayNameRequest { DisplayName = nameinput },
+            displaynamesuccess,
+            Onerror);
         register.SetActive(false);
+        messagetext.text = " ";
+    }
+
+    private void displaynamesuccess(UpdateUserTitleDisplayNameResult result)
+    {
+        Debug.Log(result.DisplayName);
     }
 
     public void Onclicklogin()
     {
-        messagetext.text = " ";
         var request = new LoginWithEmailAddressRequest
         {
             Email = emailinput,
@@ -127,7 +134,7 @@ public class PlayfabManager : MonoBehaviour
 
     
 
-    /*public void Sendlevel(int level)
+    public void Sendscore( )
     {
         var request = new UpdatePlayerStatisticsRequest
         {
@@ -135,8 +142,8 @@ public class PlayfabManager : MonoBehaviour
             {
                new StatisticUpdate
                {
-                   StatisticName="Level Progress",
-                    Value = level
+                   StatisticName="Overall Score",
+                    Value = PlayerPrefs.GetInt("OVERALLSCORE")
                }
             }   
         };
@@ -175,19 +182,12 @@ public class PlayfabManager : MonoBehaviour
             int pos = item.Position + 1;
             texts[0].text = pos.ToString();
             texts[1].text = item.DisplayName;
-            texts[2].text = item.StatValue.ToString();
-
-            Debug.Log(item.Position + " " + item.DisplayName + " " + item.StatValue);
+            texts[2].text = item.StatValue.ToString(); 
         }
     }
-*/
-    
-
-    
 
     public void Resetpwd()
     {
-        messagetext.text = " ";
         var request = new SendAccountRecoveryEmailRequest
         {
             Email=emailinput,
@@ -200,6 +200,7 @@ public class PlayfabManager : MonoBehaviour
     {
         messagetext.text = "Password reset mail sent";
         reset.SetActive(false);
+        messagetext.text = " ";
     }
 
     private void Onerror(PlayFabError error)

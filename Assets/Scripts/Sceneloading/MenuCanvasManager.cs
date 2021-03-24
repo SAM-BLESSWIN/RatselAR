@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class MenuCanvasManager : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class MenuCanvasManager : MonoBehaviour
     private GameObject reg;
     [SerializeField]
     private GameObject reset;
+    [SerializeField]
+    private TMP_Text messagetext;
 
     public void login()
     {
@@ -44,5 +47,9 @@ public class MenuCanvasManager : MonoBehaviour
     public void resetpwdclose()
     {
         reset.SetActive(false);
+    }
+    public void clearmsg()
+    {
+        messagetext.text = " ";
     }
 }
