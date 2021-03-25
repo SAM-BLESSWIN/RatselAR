@@ -6,8 +6,7 @@ using static SpeechRecognizerPlugin;
 public class SpeechRecognizer : MonoBehaviour, ISpeechRecognizerPlugin
 {
     [SerializeField] private Button startListeningBtn = null;
-    [SerializeField] private Toggle continuousListeningTgle = null;
-    [SerializeField] private TextMeshProUGUI resultsTxt = null;
+    [SerializeField] private TMP_Text resultsTxt = null;
 
     private SpeechRecognizerPlugin plugin = null;
 
@@ -16,17 +15,11 @@ public class SpeechRecognizer : MonoBehaviour, ISpeechRecognizerPlugin
         plugin = SpeechRecognizerPlugin.GetPlatformPluginVersion(this.gameObject.name);
 
         startListeningBtn.onClick.AddListener(StartListening);
-        continuousListeningTgle.onValueChanged.AddListener(SetContinuousListening);
     }
 
     private void StartListening()
     {
         plugin.StartListening();
-    }
-
-    private void SetContinuousListening(bool isContinuous)
-    {
-        plugin.SetContinuousListening(isContinuous);
     }
 
     public void OnResult(string recognizedResult)
@@ -35,9 +28,9 @@ public class SpeechRecognizer : MonoBehaviour, ISpeechRecognizerPlugin
         string[] result = recognizedResult.Split(delimiterChars);
 
         resultsTxt.text = "";
-       // for (int i = 0; i < result.Length; i++)
-       // {
+        for (int i = 0; i < result.Length; i++)
+        {
             resultsTxt.text = result[0] ;
-       // }
+        }
     }
 }

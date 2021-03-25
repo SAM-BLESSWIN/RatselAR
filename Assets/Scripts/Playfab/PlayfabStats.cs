@@ -8,8 +8,7 @@ using TMPro;
 
 public class PlayfabStats : MonoBehaviour
 {
-    private int totalscore = 100;
-
+    private int totalscore=0;
 
     private void Start()
     {

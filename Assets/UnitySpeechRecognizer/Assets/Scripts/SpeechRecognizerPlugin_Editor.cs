@@ -17,7 +17,7 @@ public class SpeechRecognizerPlugin_Editor : SpeechRecognizerPlugin
         if(this.isContinuous)
             speechRecognizer.OnResult("continuous listening test~continuous listening test~continuous listening test");
         else
-            speechRecognizer.OnResult("start listening test~start listening test~start listening test");
+            speechRecognizer.OnResult("listening...");
     }
 
     protected override void SetUp()
