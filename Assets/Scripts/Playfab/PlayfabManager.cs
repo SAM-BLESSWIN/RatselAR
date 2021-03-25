@@ -12,7 +12,8 @@ public class PlayfabManager : MonoBehaviour
     private string pwdinput;
     private string conpwdinput;
     private string nameinput;
-
+    private string displayinput;
+    
     [SerializeField]
     private TMP_Text messagetext;
     [SerializeField]
@@ -26,6 +27,8 @@ public class PlayfabManager : MonoBehaviour
     [SerializeField]
     private GameObject reset;
     [SerializeField]
+    private GameObject namewindow;
+    [SerializeField]
     private GameObject leaderbdicon;
     [SerializeField]
     private GameObject logicon;
@@ -33,6 +36,8 @@ public class PlayfabManager : MonoBehaviour
     private GameObject gameicon;
     [SerializeField]
     private GameObject logouticon;
+    [SerializeField]
+    private PlayfabStats playfabstats;
 
     private void Start()
     {
@@ -46,6 +51,11 @@ public class PlayfabManager : MonoBehaviour
     {
         nameinput = usernameIn;
     }
+    public void Getdispname(string displaynameIn)
+    {
+        displayinput = displaynameIn;
+    }
+
     public void GetUsermailid(string usermailidIn)
     {
         emailinput = usermailidIn;
@@ -67,17 +77,50 @@ public class PlayfabManager : MonoBehaviour
         {
             Email = emailinput,
             Password = pwdinput,
+            InfoRequestParameters = new GetPlayerCombinedInfoRequestParams
+            {
+                GetPlayerProfile = true
+            }
         };
         PlayFabClientAPI.LoginWithEmailAddress(request, OnLoginSuccess, Onerror);
     }
 
     private void OnLoginSuccess(LoginResult result)
     {
+        if(!PlayerPrefs.HasKey("EMAIL"))
+        {
+            PlayerPrefs.SetString("EMAIL", emailinput);
+            PlayerPrefs.SetString("PASSWORD", pwdinput);
+        }
+        playfabstats.Sendscore();
+
+        string name = " ";
+
+        if (result.InfoResultPayload.PlayerProfile != null)
+            name = result.InfoResultPayload.PlayerProfile.DisplayName;
+
+        if (name == null)
+            namewindow.SetActive(true);
+
         login.SetActive(false);
         logicon.SetActive(false);
         gameicon.SetActive(true);
         logouticon.SetActive(true);
         leaderbdicon.SetActive(true);
+    }
+
+    public void submitname()
+    {
+        var request = new UpdateUserTitleDisplayNameRequest
+        {
+            DisplayName = displayinput
+        };
+        PlayFabClientAPI.UpdateUserTitleDisplayName(request, Onnameset, Onerror);
+    }
+
+    private void Onnameset(UpdateUserTitleDisplayNameResult result)
+    {
+        namewindow.SetActive(false);
     }
 
     public void Register()
@@ -107,19 +150,8 @@ public class PlayfabManager : MonoBehaviour
 
     private void Onregistersucccess(RegisterPlayFabUserResult result)
     {
-        PlayerPrefs.SetString("EMAIL", emailinput);
-        PlayerPrefs.SetString("PASSWORD", pwdinput);
-        PlayFabClientAPI.UpdateUserTitleDisplayName(
-            new UpdateUserTitleDisplayNameRequest { DisplayName = nameinput },
-            displaynamesuccess,
-            Onerror);
         register.SetActive(false);
         messagetext.text = " ";
-    }
-
-    private void displaynamesuccess(UpdateUserTitleDisplayNameResult result)
-    {
-        Debug.Log(result.DisplayName);
     }
 
     public void Onclicklogin()
@@ -128,40 +160,19 @@ public class PlayfabManager : MonoBehaviour
         {
             Email = emailinput,
             Password = pwdinput,
+            InfoRequestParameters = new GetPlayerCombinedInfoRequestParams
+            {
+                GetPlayerProfile = true
+            }
         };
         PlayFabClientAPI.LoginWithEmailAddress(request, OnLoginSuccess, Onerror);
     }
-
-    
-
-    public void Sendscore( )
-    {
-        var request = new UpdatePlayerStatisticsRequest
-        {
-            Statistics = new List<StatisticUpdate>
-            {
-               new StatisticUpdate
-               {
-                   StatisticName="Overall Score",
-                    Value = PlayerPrefs.GetInt("OVERALLSCORE")
-               }
-            }   
-        };
-        PlayFabClientAPI.UpdatePlayerStatistics(request, Onsuccessupdate, Onerror);
-    }
-
-    private void Onsuccessupdate(UpdatePlayerStatisticsResult result)
-    {
-        Debug.Log("User statistics updated");
-    }
-
-   
 
     public void Getleaderboardstats()
     {
         var request = new GetLeaderboardRequest
         {
-            StatisticName = "Level Progress",
+            StatisticName = "Overall Score",
             StartPosition = 0,
             MaxResultsCount = 10
         };
@@ -214,4 +225,6 @@ public class PlayfabManager : MonoBehaviour
         PlayerPrefs.DeleteKey("EMAIL");
         PlayerPrefs.DeleteKey("PASSWORD");
     }
+
+    
 }
