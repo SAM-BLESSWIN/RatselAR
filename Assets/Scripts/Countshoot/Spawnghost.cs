@@ -25,7 +25,5 @@ public class Spawnghost : MonoBehaviour
         spawnedghost =Instantiate(spawnedghost, spawnedpoint.position, spawnedpoint.rotation);
 
         StartCoroutine(createghost());
-    }
-  
-    
+    }  
 }

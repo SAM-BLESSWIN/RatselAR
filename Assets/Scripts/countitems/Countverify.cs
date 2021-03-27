@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Countverify : MonoBehaviour
 {
@@ -12,6 +13,10 @@ public class Countverify : MonoBehaviour
     private GameObject crct;
     [SerializeField]
     private GameObject wrng;
+    [SerializeField]
+    private GameObject win;
+    [SerializeField]
+    private GameObject loss;
 
     private int eggscount;
     private int playercount;
@@ -38,13 +43,20 @@ public class Countverify : MonoBehaviour
 
     IEnumerator correct()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         crct.SetActive(false);
+        win.SetActive(true);
+        int currentlevel = SceneManager.GetActiveScene().buildIndex;
+        if (currentlevel - 15 >= PlayerPrefs.GetInt("NUMBERSLEVELUNLOCKED"))
+        {
+            PlayerPrefs.SetInt("ALPHABETSLEVELUNLOCKED", (currentlevel - 15) + 1);
+        }
     }
 
     IEnumerator wrong()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         wrng.SetActive(false);
+        loss.SetActive(true);
     }
 }

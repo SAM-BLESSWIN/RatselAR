@@ -18,7 +18,6 @@ public class Shoot : MonoBehaviour
                 Destroy(hit.transform.gameObject);
                 Instantiate(smoke, hit.point, Quaternion.LookRotation(hit.normal));
                 count.shotghostcount();
-                count.checkcrct();
             }
         }
     }

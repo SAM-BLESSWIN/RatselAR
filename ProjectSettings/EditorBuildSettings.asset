@@ -53,6 +53,21 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Game/G_voicereadword 1.unity
     guid: 4a6fb3d8abe29d746abe874370820a38
+  - enabled: 1
+    path: Assets/Scenes/Game/G_Counteggs.unity
+    guid: a3ff06101c43a25439a9aca6758c6c16
+  - enabled: 1
+    path: Assets/Scenes/Game/G_Counteggs 1.unity
+    guid: de6694b82e709b744a651fed377f139e
+  - enabled: 1
+    path: Assets/Scenes/Game/G_Counteggs 2.unity
+    guid: ecafff9ef8f107e4ea4ccc4fe3cb0536
+  - enabled: 1
+    path: Assets/Scenes/Game/G_Countshoot.unity
+    guid: 73e07322bd27a98449f6df2854822276
+  - enabled: 1
+    path: Assets/Scenes/Game/G_Countshoot 1.unity
+    guid: 1c88a3ebba4e3df438afd7c2392b8336
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 26848eae126ad4e4bb227053510414ed,
       type: 2}

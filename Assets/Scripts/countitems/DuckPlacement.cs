@@ -11,6 +11,10 @@ public class DuckPlacement : MonoBehaviour
     public GameObject placementIndicator;
 
     [SerializeField]
+    private GameObject detect;
+    [SerializeField]
+    private GameObject place;
+    [SerializeField]
     private GameObject startbt;
     [SerializeField]
     private GameObject countcanvas;
@@ -30,6 +34,7 @@ public class DuckPlacement : MonoBehaviour
 
     private void Awake()
     {
+        detect.SetActive(true);
         aRRaycastManager = GetComponent<ARRaycastManager>();
     }
 
@@ -50,7 +55,9 @@ public class DuckPlacement : MonoBehaviour
     {
         if (spawnedObject == null && placementPoseIsValid)
         {
+            detect.SetActive(false);
             placementIndicator.SetActive(true);
+            place.SetActive(true);
             placementIndicator.transform.SetPositionAndRotation(PlacementPose.position, PlacementPose.rotation);
         }
         else
@@ -75,6 +82,7 @@ public class DuckPlacement : MonoBehaviour
     void ARPlaceObject()
     {
         spawnedObject = Instantiate(arObjectToSpawn, PlacementPose.position, PlacementPose.rotation);
+        place.SetActive(false);
         anim=spawnedObject.GetComponent<Animator>();
         eggspawn = spawnedObject.GetComponentInChildren<Eggspawn>();
         startbt.SetActive(true);
