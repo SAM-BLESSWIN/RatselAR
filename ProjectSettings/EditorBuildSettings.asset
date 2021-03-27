@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Game/G_voicereadword.unity
-    guid: 018b85c8b5fe46b46be543d1a1dfec53
+    path: Assets/Scenes/Game/G_imagealpha.unity
+    guid: 9c218f05d07b85f4e8e7c8e9afbb8111
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 26848eae126ad4e4bb227053510414ed,
       type: 2}

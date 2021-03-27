@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 848409ee8ba454f42a5ddff137688a27, type: 3}
-  m_Name: ReferenceImageLibrary
+  m_Name: alpha1
   m_EditorClassIdentifier: 
   m_GuidLow: 4696121195153190227
   m_GuidHigh: 4440795165946157981
@@ -23,5 +23,25 @@ MonoBehaviour:
       m_GuidHigh: 12292636420410987080
     m_Size: {x: 1, y: 1.4499673}
     m_SpecifySize: 1
-    m_Name: a
-    m_Texture: {fileID: 2800000, guid: 792c8f440c42adc44852a0f7b13798aa, type: 3}
+    m_Name: A
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4788885286804966739
+      m_GuidHigh: 12956447708549234314
+    m_SerializedTextureGuid:
+      m_GuidLow: 10589105082930364352
+      m_GuidHigh: 2632483654574729433
+    m_Size: {x: 1, y: 1.5417246}
+    m_SpecifySize: 1
+    m_Name: B
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4635453382606059934
+      m_GuidHigh: 4359095098366063029
+    m_SerializedTextureGuid:
+      m_GuidLow: 3761667646641790024
+      m_GuidHigh: 1125155381968918891
+    m_Size: {x: 1, y: 1.5310774}
+    m_SpecifySize: 1
+    m_Name: C
+    m_Texture: {fileID: 0}
