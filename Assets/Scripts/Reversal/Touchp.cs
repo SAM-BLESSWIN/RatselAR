@@ -20,7 +20,6 @@ public class Touchp : MonoBehaviour
 
     private int numofhearts = 3;
 
-    private bool isdead = false;
 
     [SerializeField]
     private GameObject ongame;
@@ -55,7 +54,7 @@ public class Touchp : MonoBehaviour
             {
                 if(hit.collider.tag=="p")
                 {
-                    score += 10;
+                    score += 1;
                     scoretext.text = score.ToString();
                     crct=Instantiate(correct, hit.point, Quaternion.identity);
                     Destroy(crct,0.2f);
@@ -71,7 +70,7 @@ public class Touchp : MonoBehaviour
             }
         }
 
-        if(score >=100)
+        if(score >=20)
         {
             StartCoroutine(loadwin());
         }
@@ -84,9 +83,9 @@ public class Touchp : MonoBehaviour
             winscreen.SetActive(true);
 
             int currentlevel = SceneManager.GetActiveScene().buildIndex;
-            if (currentlevel - 2 >= PlayerPrefs.GetInt("levelsunlocked"))
+            if (currentlevel - 4 >= PlayerPrefs.GetInt("ALPHABETSLEVELUNLOCKED"))
             {
-                PlayerPrefs.SetInt("levelsunlocked", (currentlevel - 2) + 1);
+                PlayerPrefs.SetInt("ALPHABETSLEVELUNLOCKED", (currentlevel - 4) + 1);
             }
         }
 

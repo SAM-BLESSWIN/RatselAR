@@ -5,18 +5,18 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-public class Levelmanager : MonoBehaviour
+public class Alphabetlevelmanager : MonoBehaviour
 {
     private int levelsunlocked;
     [SerializeField]
     private Button[] button;
-    private TMP_Text[] leveltext=new TMP_Text[5];
+    private TMP_Text[] leveltext = new TMP_Text[5];
     [SerializeField]
     private Sprite locked;
 
     private void Awake()
     {
-        for(int i=0;i<button.Length;i++)
+        for (int i = 0; i < button.Length; i++)
         {
             leveltext[i] = button[i].GetComponentInChildren<TMP_Text>();
         }
@@ -26,7 +26,7 @@ public class Levelmanager : MonoBehaviour
     {
         levelsunlocked = PlayerPrefs.GetInt("ALPHABETSLEVELUNLOCKED", 1);
 
-        for (int i=0; i < button.Length ; i++)
+        for (int i = 0; i < button.Length; i++)
         {
             button[i].GetComponent<Button>().enabled = false;
             button[i].image.sprite = locked;
@@ -45,7 +45,7 @@ public class Levelmanager : MonoBehaviour
     {
         SceneManager.LoadScene(levelindex);
     }
-    
+
     public void loadback()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);

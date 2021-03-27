@@ -20,8 +20,6 @@ public class Touchd : MonoBehaviour
 
     private int numofhearts = 3;
 
-    private bool isdead = false;
-
     [SerializeField]
     private GameObject ongame;
     [SerializeField]
@@ -55,7 +53,7 @@ public class Touchd : MonoBehaviour
             {
                 if(hit.collider.tag=="d")
                 {
-                    score += 10;
+                    score += 1;
                     scoretext.text = score.ToString();
                     crct=Instantiate(correct, hit.point, Quaternion.identity);
                     Destroy(crct,0.2f);
@@ -71,7 +69,7 @@ public class Touchd : MonoBehaviour
             }
         }
 
-        if(score >=100)
+        if(score >=20)
         {
             StartCoroutine(loadwin());
         }
@@ -84,9 +82,9 @@ public class Touchd : MonoBehaviour
             winscreen.SetActive(true);
 
             int currentlevel = SceneManager.GetActiveScene().buildIndex;
-            if (currentlevel - 2 >= PlayerPrefs.GetInt("levelsunlocked"))
+            if (currentlevel - 4 >= PlayerPrefs.GetInt("ALPHABETSLEVELUNLOCKED"))
             {
-                PlayerPrefs.SetInt("levelsunlocked", (currentlevel - 2) + 1);
+                PlayerPrefs.SetInt("ALPHABETSLEVELUNLOCKED", (currentlevel - 4) + 1);
             }
         }
 

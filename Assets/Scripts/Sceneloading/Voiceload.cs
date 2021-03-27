@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class EndScreen : MonoBehaviour
-{ 
-    public void menu()
-    {
-        SceneManager.LoadScene(1);
-    }
-
-    public void tryagain()
+public class Voiceload : MonoBehaviour
+{
+    public void Resetscene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void Menu()
+    {
+        SceneManager.LoadScene(1);
     }
 
     public void exit()
@@ -25,5 +25,4 @@ public class EndScreen : MonoBehaviour
         int currentlevel = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentlevel + 1);
     }
-
 }

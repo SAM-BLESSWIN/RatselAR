@@ -5,6 +5,7 @@ using PlayFab;
 using PlayFab.ClientModels;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayfabManager : MonoBehaviour
 {
@@ -40,6 +41,8 @@ public class PlayfabManager : MonoBehaviour
     private PlayfabStats playfabstats;
     [SerializeField]
     private GameObject logging;
+    [SerializeField]
+    private GameObject loggingout;
 
     private void Start()
     {
@@ -228,7 +231,15 @@ public class PlayfabManager : MonoBehaviour
     {
         PlayerPrefs.DeleteKey("EMAIL");
         PlayerPrefs.DeleteKey("PASSWORD");
+        loggingout.SetActive(true);
+        StartCoroutine(loadout());
+        
     }
 
+    IEnumerator loadout()
+    {
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(0);
+    }
     
 }

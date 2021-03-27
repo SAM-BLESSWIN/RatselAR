@@ -12,6 +12,10 @@ public class Characterplacement : MonoBehaviour
 
     [SerializeField]
     private GameObject voicecanvas;
+    [SerializeField]
+    private GameObject detect;
+    [SerializeField]
+    private GameObject place;
 
     private GameObject spawnedObject;
     private Pose PlacementPose;
@@ -23,6 +27,7 @@ public class Characterplacement : MonoBehaviour
     private void Awake()
     {
         aRRaycastManager = GetComponent<ARRaycastManager>();
+        detect.SetActive(true);
 
     }
 
@@ -44,6 +49,8 @@ public class Characterplacement : MonoBehaviour
         if (spawnedObject == null && placementPoseIsValid)
         {
             placementIndicator.SetActive(true);
+            detect.SetActive(false);
+            place.SetActive(true);
             placementIndicator.transform.SetPositionAndRotation(PlacementPose.position, PlacementPose.rotation);
         }
         else
@@ -68,6 +75,7 @@ public class Characterplacement : MonoBehaviour
     void ARPlaceObject()
     {
         spawnedObject = Instantiate(arObjectToSpawn, PlacementPose.position, arObjectToSpawn.transform.rotation);
+        place.SetActive(false);
         voicecanvas.SetActive(true);
         anim = spawnedObject.GetComponent<Animator>();
     }
