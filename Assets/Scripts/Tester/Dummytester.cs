@@ -7,7 +7,7 @@ public class Dummytester : MonoBehaviour
    
     void Start()
     {
-        PlayerPrefs.DeleteAll();
+        PlayerPrefs.DeleteKey("ALPHABETSLEVELUNLOCKED");
     }
 
 }

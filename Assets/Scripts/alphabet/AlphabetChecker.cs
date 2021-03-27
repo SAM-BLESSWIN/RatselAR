@@ -9,6 +9,8 @@ using UnityEngine.SceneManagement;
 public class AlphabetChecker : MonoBehaviour
 {
     [SerializeField]
+    private GameObject instruction;
+    [SerializeField]
     private TMP_Text alphabets;
     [SerializeField]
     private GameObject crct;
@@ -20,8 +22,9 @@ public class AlphabetChecker : MonoBehaviour
     private GameObject[] arObjectsToPlace;
     [SerializeField]
     private string[] alpha;
+    [SerializeField]
+    private GameObject winscreen;
 
-    private bool run = false;
     private string curralpha;
     private static int count;
     private GameObject goARObject;
@@ -38,6 +41,7 @@ public class AlphabetChecker : MonoBehaviour
         curralpha = alpha[count];
         alphabets.text = curralpha;
         count++;
+        Destroy(instruction,3f);
     }
 
     void Awake()
@@ -111,7 +115,6 @@ public class AlphabetChecker : MonoBehaviour
         {
             if (arObjectsToPlace != null)
             {
-                run = true;
                 crct.SetActive(true);
                 StartCoroutine(timer());
             }
@@ -119,6 +122,7 @@ public class AlphabetChecker : MonoBehaviour
         else
         {
             wrong.SetActive(true);
+            Handheld.Vibrate();
             StartCoroutine(wtimer());
         }
     }
@@ -126,29 +130,40 @@ public class AlphabetChecker : MonoBehaviour
     IEnumerator wtimer()
     {
         yield return new WaitForSeconds(2f);
+        wrong.SetActive(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     IEnumerator timer()
     {
-        yield return new WaitForSeconds(2f);
-
-        if (run)
-        {
+            yield return new WaitForSeconds(2f);
             Destroy(goARObject);
             crct.SetActive(false);
             arObjects.Remove(curralpha);
-            curralpha = alpha[count];
 
             if (count < alpha.Length)
             {
+                curralpha = alpha[count];
                 alphabets.text = curralpha;
                 count++;
-            }
+            }   
             else
             {
-                //gameover
+                StartCoroutine(loadwin());
             }
+           
+    }
+
+    IEnumerator loadwin()
+    {
+        yield return new WaitForSeconds(1f);
+        Time.timeScale = 0f;
+        winscreen.SetActive(true);
+
+        int currentlevel = SceneManager.GetActiveScene().buildIndex;
+        if (currentlevel - 4 >= PlayerPrefs.GetInt("ALPHABETSLEVELUNLOCKED"))
+        {
+            PlayerPrefs.SetInt("ALPHABETSLEVELUNLOCKED", (currentlevel - 4) + 1);
         }
     }
 }

@@ -10,7 +10,7 @@ public class Alphabetlevelmanager : MonoBehaviour
     private int levelsunlocked;
     [SerializeField]
     private Button[] button;
-    private TMP_Text[] leveltext = new TMP_Text[5];
+    private TMP_Text[] leveltext = new TMP_Text[11];
     [SerializeField]
     private Sprite locked;
 

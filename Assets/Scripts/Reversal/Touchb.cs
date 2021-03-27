@@ -20,7 +20,6 @@ public class Touchb : MonoBehaviour
 
     private int numofhearts = 3;
 
-    private bool isdead = false;
 
     [SerializeField]
     private GameObject ongame;
