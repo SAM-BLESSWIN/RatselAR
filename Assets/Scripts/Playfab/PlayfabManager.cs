@@ -38,12 +38,15 @@ public class PlayfabManager : MonoBehaviour
     private GameObject logouticon;
     [SerializeField]
     private PlayfabStats playfabstats;
+    [SerializeField]
+    private GameObject logging;
 
     private void Start()
     {
         if (PlayerPrefs.HasKey("EMAIL"))
         {
-            Login();
+            logging.SetActive(true);
+            Login(); 
         }
     }
 
@@ -107,6 +110,7 @@ public class PlayfabManager : MonoBehaviour
         gameicon.SetActive(true);
         logouticon.SetActive(true);
         leaderbdicon.SetActive(true);
+        logging.SetActive(false);
     }
 
     public void submitname()
