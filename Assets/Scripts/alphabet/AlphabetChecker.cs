@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class AlphabetChecker : MonoBehaviour
 {
+    private int totalscore;
     [SerializeField]
     private GameObject instruction;
     [SerializeField]
@@ -164,6 +165,9 @@ public class AlphabetChecker : MonoBehaviour
         if (currentlevel - 4 >= PlayerPrefs.GetInt("ALPHABETSLEVELUNLOCKED"))
         {
             PlayerPrefs.SetInt("ALPHABETSLEVELUNLOCKED", (currentlevel - 4) + 1);
+
+            totalscore = PlayerPrefs.GetInt("TOTALSCORE") + 100;
+            PlayerPrefs.SetInt("TOTALSCORE", totalscore);
         }
     }
 }

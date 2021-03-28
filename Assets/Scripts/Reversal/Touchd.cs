@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class Touchd : MonoBehaviour
 {
+    private int totalscore;
     [SerializeField]
     private TMP_Text scoretext;
     private int score=0;
@@ -85,6 +86,8 @@ public class Touchd : MonoBehaviour
             if (currentlevel - 4 >= PlayerPrefs.GetInt("ALPHABETSLEVELUNLOCKED"))
             {
                 PlayerPrefs.SetInt("ALPHABETSLEVELUNLOCKED", (currentlevel - 4) + 1);
+                totalscore = PlayerPrefs.GetInt("TOTALSCORE") + 100;
+                PlayerPrefs.SetInt("TOTALSCORE", totalscore);
             }
         }
 

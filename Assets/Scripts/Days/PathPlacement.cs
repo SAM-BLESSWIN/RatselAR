@@ -7,6 +7,13 @@ using TMPro;
 
 public class PathPlacement : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject detect;
+    [SerializeField]
+    private GameObject place;
+    [SerializeField]
+    private GameObject Gamecanvas1;
+
     public GameObject arObjectToSpawn;
     public GameObject placementIndicator;
 
@@ -19,8 +26,8 @@ public class PathPlacement : MonoBehaviour
 
     private void Awake()
     {
+        detect.SetActive(true);
         aRRaycastManager = GetComponent<ARRaycastManager>();
-
     }
 
 
@@ -41,7 +48,9 @@ public class PathPlacement : MonoBehaviour
     {
         if (spawnedObject == null && placementPoseIsValid)
         {
+            detect.SetActive(false);
             placementIndicator.SetActive(true);
+            place.SetActive(true);
             placementIndicator.transform.SetPositionAndRotation(PlacementPose.position, PlacementPose.rotation);
         }
         else
@@ -66,11 +75,15 @@ public class PathPlacement : MonoBehaviour
     void ARPlaceObject()
     {
         spawnedObject = Instantiate(arObjectToSpawn, PlacementPose.position, arObjectToSpawn.transform.rotation);
-        jumpandmove=spawnedObject.GetComponentInChildren<JumpandMove>();
+        place.SetActive(false);
+        Gamecanvas1.SetActive(true);
+        jumpandmove =spawnedObject.GetComponentInChildren<JumpandMove>();  
     }  
 
     public void jump()
     {
         jumpandmove.jump();
     }
+
+
 }

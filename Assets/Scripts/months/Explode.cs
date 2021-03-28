@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Explode : MonoBehaviour
 {
@@ -12,18 +13,26 @@ public class Explode : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag==months[monindex])
-        {
-            Instantiate(explosion, collision.transform.position, collision.transform.rotation);
-            Destroy(collision.gameObject);
-            monindex++;
-            Destroy(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject, 2f);
-        }
+            if (collision.gameObject.tag == months[monindex])
+            {
+                Instantiate(explosion, collision.transform.position, collision.transform.rotation);
+                Destroy(collision.gameObject);
+                monindex++;
+                Destroy(gameObject);
+            }
+            else
+            {
+                Destroy(gameObject, 2f);
+            }
     }
 
-    
+    public bool end()
+    {
+        if(monindex>11)
+        {
+            return true;
+        }
+        return false;
+    }
+
 }

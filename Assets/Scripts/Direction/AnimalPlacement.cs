@@ -7,6 +7,13 @@ using TMPro;
 
 public class AnimalPlacement : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject detect;
+    [SerializeField]
+    private GameObject place;
+    [SerializeField]
+    private GameObject gamecanvas;
+
     public GameObject arObjectToSpawn;
     public GameObject placementIndicator;
 
@@ -26,7 +33,7 @@ public class AnimalPlacement : MonoBehaviour
     private void Awake()
     {
         aRRaycastManager = GetComponent<ARRaycastManager>();
-
+        detect.SetActive(true);
     }
 
 
@@ -47,7 +54,9 @@ public class AnimalPlacement : MonoBehaviour
     {
         if (spawnedObject == null && placementPoseIsValid)
         {
+            detect.SetActive(false);
             placementIndicator.SetActive(true);
+            place.SetActive(true);
             placementIndicator.transform.SetPositionAndRotation(PlacementPose.position, PlacementPose.rotation);
         }
         else
@@ -72,6 +81,8 @@ public class AnimalPlacement : MonoBehaviour
     void ARPlaceObject()
     {
         spawnedObject = Instantiate(arObjectToSpawn, PlacementPose.position, arObjectToSpawn.transform.rotation);
+        gamecanvas.SetActive(true);
+        place.SetActive(false);
         monkeymove = spawnedObject.GetComponentInChildren<MonkeyMovement>();
         movekey.SetActive(true);
         drtext.enabled=true;

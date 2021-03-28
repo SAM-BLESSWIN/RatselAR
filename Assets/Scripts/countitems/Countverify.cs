@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class Countverify : MonoBehaviour
 {
+    private int totalscore;
     [SerializeField]
     private TMP_InputField countvalue;
     [SerializeField]
@@ -49,7 +50,10 @@ public class Countverify : MonoBehaviour
         int currentlevel = SceneManager.GetActiveScene().buildIndex;
         if (currentlevel - 15 >= PlayerPrefs.GetInt("NUMBERSLEVELUNLOCKED"))
         {
-            PlayerPrefs.SetInt("ALPHABETSLEVELUNLOCKED", (currentlevel - 15) + 1);
+            PlayerPrefs.SetInt("NUMBERSLEVELUNLOCKED", (currentlevel - 15) + 1);
+
+            totalscore = PlayerPrefs.GetInt("TOTALSCORE") + 100;
+            PlayerPrefs.SetInt("TOTALSCORE", totalscore);
         }
     }
 

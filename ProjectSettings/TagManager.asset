@@ -27,6 +27,10 @@ TagManager:
   - oct
   - nov
   - dec
+  - fakegnd
+  - end
+  - win
+  - loss
   layers:
   - Default
   - TransparentFX

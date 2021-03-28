@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class Count : MonoBehaviour
 {
+    private int totalscore;
     [SerializeField]
     private TMP_Text toshootcount;
     [SerializeField]
@@ -71,6 +72,9 @@ public class Count : MonoBehaviour
             if (currentlevel - 15 >= PlayerPrefs.GetInt("NUMBERSLEVELUNLOCKED"))
             {
                 PlayerPrefs.SetInt("NUMBERSLEVELUNLOCKED", (currentlevel - 15) + 1);
+
+                totalscore = PlayerPrefs.GetInt("TOTALSCORE") + 100;
+                PlayerPrefs.SetInt("TOTALSCORE", totalscore);
             }
         }
 

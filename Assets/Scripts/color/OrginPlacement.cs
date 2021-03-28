@@ -8,6 +8,13 @@ using TMPro;
 
 public class OrginPlacement : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject detect;
+    [SerializeField]
+    private GameObject place;
+    [SerializeField]
+    private GameObject Gamecanvas;
+
     public GameObject arObjectToSpawn;
     public GameObject placementIndicator;
     public GameObject rotatecanvas;
@@ -26,6 +33,7 @@ public class OrginPlacement : MonoBehaviour
 
     private void Awake()
     {
+        detect.SetActive(true);
         aRRaycastManager = GetComponent<ARRaycastManager>();
         rotatecanvas.SetActive(false);
     }
@@ -48,7 +56,9 @@ public class OrginPlacement : MonoBehaviour
     {
         if (spawnedObject == null && placementPoseIsValid)
         {
+            detect.SetActive(false);
             placementIndicator.SetActive(true);
+            place.SetActive(true);
             placementIndicator.transform.SetPositionAndRotation(PlacementPose.position, PlacementPose.rotation);
         }
         else
@@ -73,6 +83,8 @@ public class OrginPlacement : MonoBehaviour
     void ARPlaceObject()
     {
         spawnedObject = Instantiate(arObjectToSpawn,PlacementPose.position, arObjectToSpawn.transform.rotation);
+        Gamecanvas.SetActive(true);
+        place.SetActive(false);
         rotatecanvas.SetActive(true);
     }
 

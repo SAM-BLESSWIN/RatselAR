@@ -8,17 +8,23 @@ using TMPro;
 
 public class PlayfabStats : MonoBehaviour
 {
-    private int totalscore=0;
+
+    private int totalscore;
 
     private void Start()
     {
-        PlayerPrefs.SetInt("TOTALSCORE", totalscore);
-        DontDestroyOnLoad(this.gameObject);
+        if (PlayerPrefs.HasKey("TOTALSCORE"))
+        {
+            totalscore = PlayerPrefs.GetInt("TOTALSCORE");
+        }
+        else
+        {
+            PlayerPrefs.SetInt("TOTALSCORE", 0);
+        }
     }
 
     public void Sendscore()
     {
-        Debug.Log(PlayerPrefs.GetInt("TOTALSCORE"));
         var request = new UpdatePlayerStatisticsRequest
         {
             Statistics = new List<StatisticUpdate>

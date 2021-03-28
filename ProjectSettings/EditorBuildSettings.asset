@@ -68,6 +68,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Game/G_Countshoot 1.unity
     guid: 1c88a3ebba4e3df438afd7c2392b8336
+  - enabled: 1
+    path: Assets/Scenes/Game/G_Feedhim.unity
+    guid: da39040002b1a4246a681e9cdcd883b7
+  - enabled: 1
+    path: Assets/Scenes/Game/G_Color.unity
+    guid: 3b4ed0f67741f8e4b8bff0620aa458e3
+  - enabled: 1
+    path: Assets/Scenes/Game/G_Months.unity
+    guid: 1e6759dbd565b054f98c31d9ca15c911
+  - enabled: 1
+    path: Assets/Scenes/Game/G_Days.unity
+    guid: f1dfb7f40175ce743bfa46c7c779fb5b
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 26848eae126ad4e4bb227053510414ed,
       type: 2}
